@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OVRBuildConfig
   m_EditorClassIdentifier: 
   androidSDKPath: C:\Users\Ben\AppData\Local\Android\Sdk
-  gradlePath: 
-  jdkPath: 
+  gradlePath: C:\Program Files\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\gradle\lib\gradle-launcher-5.1.1.jar
+  jdkPath: C:\Program Files\Java\jdk1.8.0_161\bin\java.exe

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
-    public int speed = 0;
+    public int speed = 4;
     // Use this for initialization
     void Start()
     {

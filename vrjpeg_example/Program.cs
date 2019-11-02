@@ -15,11 +15,12 @@ namespace vrjpeg_example
     {
         static void Main(string[] args)
         {
+            System.Diagnostics.Debug.WriteLine("Starting!");
             string filename = @"Resources\IMG_20170723_142255.vr.jpg";
-            string filenameWithoutExtension = filename.Substring(0, filename.Length - 7);
-            Debug.WriteLine("{0}", filenameWithoutExtension);
-    
+            string filenameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
+
             // TODO: Save to sub folder
+
             // Read raw XMP metadata.
             var xmpDirectories = VrJpegMetadataReader.ReadMetadata(filename);
 
@@ -31,7 +32,7 @@ namespace vrjpeg_example
             if (pano.ImageData != null)
             {
                 string rightEyeFilename = string.Format("{0}_right.jpg", filenameWithoutExtension);
-                string rightEyeFile = Path.Combine(Path.GetDirectoryName(filename), filenameWithoutExtension, rightEyeFilename);
+                string rightEyeFile = Path.Combine(Path.GetDirectoryName(filename), rightEyeFilename);
 
                 File.WriteAllBytes(rightEyeFile, pano.ImageData);
             }
@@ -40,25 +41,11 @@ namespace vrjpeg_example
             if (pano.AudioData != null)
             {
                 string audioFilename = string.Format("{0}_audio.mp4", filenameWithoutExtension);
-                string audioFile = Path.Combine(Path.GetDirectoryName(filename), filenameWithoutExtension, audioFilename);
+                string audioFile = Path.Combine(Path.GetDirectoryName(filename), audioFilename);
 
                 File.WriteAllBytes(audioFile, pano.AudioData);
             }
 
-        }
-
-        private static void DumpProperties(IEnumerable<XmpDirectory> directories)
-        {
-            foreach (var dir in directories)
-            {
-                foreach (var prop in dir.XmpMeta.Properties)
-                {
-                if (prop.Path != null && prop.Path.EndsWith(":Data"))
-                    Debug.WriteLine("{0} - {1}", prop.Namespace, prop.Path);
-                else
-                    Debug.WriteLine("{0} - {1}:{2}", prop.Namespace, prop.Path, prop.Value);
-                }
-            }
         }
     }
 }

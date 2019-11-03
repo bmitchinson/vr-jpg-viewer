@@ -37,21 +37,9 @@ public class ButtonAction : MonoBehaviour
                 Debug.Log("Got texture");
                 Texture2D texture = DownloadHandlerTexture.GetContent(uwr);
 
-                Debug.Log("left is");
-                Debug.Log(leftMatRef);
-
                 Debug.Log("Setting");
                 leftMatRef.mainTexture = texture;
                 rightMatRef.mainTexture = texture;
-
-                Debug.Log("now left is");
-                Debug.Log(leftMatRef);
-
-                leftMatRef.SetTexture("_MainTex", texture);
-                rightMatRef.SetTexture("_MainTex", texture);
-
-                Debug.Log("nowwww left is");
-                Debug.Log(leftMatRef);
             }
         }
     }

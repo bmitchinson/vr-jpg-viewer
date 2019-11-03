@@ -15,11 +15,9 @@ namespace vrjpeg_example
     {
         static void Main(string[] args)
         {
-            System.Diagnostics.Debug.WriteLine("Starting!");
-            string filename = @"Resources\IMG_20170723_142255.vr.jpg";
+            System.IO.File.WriteAllText(@"C:\Users\Ben\Desktop\OuputLog.txt", "Loggin:\n");
+            string filename = @"Resources\cabin.vr.jpg";
             string filenameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
-
-            // TODO: Save to sub folder
 
             // Read raw XMP metadata.
             var xmpDirectories = VrJpegMetadataReader.ReadMetadata(filename);
@@ -37,6 +35,11 @@ namespace vrjpeg_example
                 File.WriteAllBytes(rightEyeFile, pano.ImageData);
             }
 
+            if (pano.PanoInitialViewHeadingDegrees != null)
+            {
+                log(pano.PanoInitialViewHeadingDegrees.ToString());
+            }
+
             // Extract embedded audio.
             if (pano.AudioData != null)
             {
@@ -46,6 +49,15 @@ namespace vrjpeg_example
                 File.WriteAllBytes(audioFile, pano.AudioData);
             }
 
+        }
+
+        static void log(string towrite)
+        {
+            using (System.IO.StreamWriter file =
+                                new System.IO.StreamWriter(@"C:\Users\Ben\Desktop\OuputLog.txt", true))
+            {
+                file.WriteLine(towrite);
+            }
         }
     }
 }

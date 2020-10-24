@@ -8,4 +8,6 @@ Additionally, your media can be pulled down from the cloud, and uploaded straigh
 
 Blog post with more info to come soon at https://mitchinson.dev
 
+[Video Demo](https://www.youtube.com/watch?v=z-Uivg26je0)
+
 ![](https://i.imgur.com/OwhPtxo.png)
